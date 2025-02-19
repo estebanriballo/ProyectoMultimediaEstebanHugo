@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28"/>
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMultimediaEstebanHugo"
         tools:targetApi="35">
+        <activity
+            android:name=".ReproducirMusicaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrabarVideoActivity"
+            android:exported="false" />
         <activity
             android:name=".GrabarAudioActivity"
             android:exported="false" />

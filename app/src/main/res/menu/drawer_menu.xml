@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/nav_inicio"
+        android:title="Inicio"
+        android:icon="@drawable/ic_home" />
+    <item
         android:id="@+id/nav_grabar_audio"
-        android:title="Grabar audo"
+        android:title="Grabar audio"
         android:icon="@drawable/ic_mic" />
     <item
-        android:id="@+id/nav_profile"
+        android:id="@+id/nav_grabar_video"
         android:title="Grabar video"
         android:icon="@drawable/ic_video" />
     <item
-        android:id="@+id/nav_settings"
+        android:id="@+id/nav_reproducir_musica"
         android:title="Reproducir música"
         android:icon="@drawable/ic_audio" />
 </menu>
