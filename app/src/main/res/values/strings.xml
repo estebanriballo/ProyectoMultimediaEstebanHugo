@@ -2,4 +2,8 @@
     <string name="app_name">Proyecto Multimedia</string>
     <string name="open_drawer">Abrir menú</string>
     <string name="close_drawer">Cerrar menú</string>
+
+    <string name="start_record">Comenzar Grabación</string>
+    <string name="stop_record">Detener Grabación</string>
+    <string name="play_audio">Reproducir Audio</string>
 </resources>
