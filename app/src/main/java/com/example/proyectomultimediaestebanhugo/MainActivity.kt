@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-
         supportActionBar?.setDisplayShowTitleEnabled(false)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -28,11 +27,18 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_grabar_audio -> {
                     val intent = Intent(this, GrabarAudioActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_grabar_video -> {
+                    val intent = Intent(this, GrabarVideoActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_reproducir_musica -> {
+                    val intent = Intent(this, ReproducirMusicaActivity::class.java)
                     startActivity(intent)
                 }
             }
