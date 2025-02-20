@@ -17,10 +17,29 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.proyectomultimediaestebanhugo.databinding.ActivityReproducirMusicaBinding
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.recyclerview.widget.LinearLayoutManager
 
 class ReproducirMusicaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReproducirMusicaBinding
     private lateinit var exoPlayer: ExoPlayer
+
+    private val albumes = listOf(
+        Album("Views", listOf(
+            Uri.parse("file:///storage/emulated/0/Download/views-full-tracks/(11) Controlla.mp3"),
+            Uri.parse("file:///storage/emulated/0/Download/views-full-tracks/(12) One Dance (feat. Wizkid & Kyla).mp3"),
+            Uri.parse("file:///storage/emulated/0/Download/views-full-tracks/(16) Too Good (feat. Rihanna).mp3")
+        )),
+        Album("Scorpion", listOf(
+            Uri.parse("file:///storage/emulated/0/Download/scorpion_201807/5 God's Plan.mp3"),
+            Uri.parse("file:///storage/emulated/0/Download/scorpion_201807/9 In My Feelings.mp3"),
+            Uri.parse("file:///storage/emulated/0/Download/scorpion_201807/5 Finesse.mp3")
+        )),
+        Album("IYRTITL", listOf(
+            Uri.parse("file:///storage/emulated/0/Download/drake-IYRTITL/Drake - Energy.mp3"),
+            Uri.parse("file:///storage/emulated/0/Download/drake-IYRTITL/Drake - Madonna.mp3"),
+            Uri.parse("file:///storage/emulated/0/Download/drake-IYRTITL/Drake - No Tellin'.mp3")
+        ))
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +58,25 @@ class ReproducirMusicaActivity : AppCompatActivity() {
         } else {
             requestPermission()
         }
+
+        binding.recyclerViewAlbums.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewAlbums.adapter = AlbumAdapter(albumes) { album ->
+            playAlbum(album)
+        }
+
+    }
+
+    private fun playAlbum(album: Album) {
+        exoPlayer.stop()
+        exoPlayer.clearMediaItems()
+
+        album.songs.forEach { uri ->
+            val mediaItem = MediaItem.fromUri(uri)
+            exoPlayer.addMediaItem(mediaItem)
+        }
+
+        exoPlayer.prepare()
+        exoPlayer.play()
     }
 
     private fun setupNavigationDrawer() {
@@ -48,6 +86,7 @@ class ReproducirMusicaActivity : AppCompatActivity() {
                 R.id.nav_grabar_audio -> startActivity(Intent(this, GrabarAudioActivity::class.java))
                 R.id.nav_grabar_video -> startActivity(Intent(this, GrabarVideoActivity::class.java))
             }
+
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
@@ -81,8 +120,6 @@ class ReproducirMusicaActivity : AppCompatActivity() {
 
         permissionLauncher.launch(permission)
     }
-
-
 
     private fun setupPlayer() {
         exoPlayer = ExoPlayer.Builder(this).build()
