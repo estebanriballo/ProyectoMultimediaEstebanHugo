@@ -34,6 +34,14 @@
                 android:gravity="center" />
         </androidx.appcompat.widget.Toolbar>
 
+        <androidx.media3.ui.PlayerView
+            android:id="@+id/playerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:use_controller="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
         <ImageView
             android:id="@+id/menu_hamburguesa"
             android:layout_width="wrap_content"
