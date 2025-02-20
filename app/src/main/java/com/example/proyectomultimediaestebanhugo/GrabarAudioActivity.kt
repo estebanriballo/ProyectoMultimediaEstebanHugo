@@ -4,11 +4,13 @@ import android.media.MediaRecorder
 import android.os.Bundle
 import android.widget.Button
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.proyectomultimediaestebanhugo.databinding.ActivityGrabarAudioBinding
@@ -54,6 +56,25 @@ class GrabarAudioActivity : AppCompatActivity() {
 
         binding.btnPlay.setOnClickListener {
             playRecording()
+        }
+
+        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_inicio -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_grabar_video -> {
+                    val intent = Intent(this, GrabarVideoActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_reproducir_musica -> {
+                    val intent = Intent(this, ReproducirMusicaActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            true
         }
     }
 
