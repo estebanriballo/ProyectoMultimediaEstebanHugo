@@ -87,6 +87,8 @@ class ReproducirMusicaActivity : AppCompatActivity() {
                 R.id.nav_grabar_video -> startActivity(Intent(this, GrabarVideoActivity::class.java))
             }
 
+            finish()
+
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
