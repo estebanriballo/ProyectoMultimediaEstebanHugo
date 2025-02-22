@@ -112,7 +112,7 @@ class GrabarVideoActivity : AppCompatActivity() {
 
     private fun startPreview() {
         val texture = textureView.surfaceTexture
-        texture?.setDefaultBufferSize(1920, 1080)
+        texture?.setDefaultBufferSize(960, 1080)
         val surface = Surface(texture)
 
         captureRequestBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
